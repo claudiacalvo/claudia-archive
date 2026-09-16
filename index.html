@@ -1,18 +1,86 @@
 <!DOCTYPE html>
 <html lang="ca">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>CLAUDIA_ARCHIVE</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f4f0e8;
+            color: #111;
+            font-family: Arial, Helvetica, sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 900px;
+        }
+
+        .warning {
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: clamp(50px, 12vw, 150px);
+            line-height: 0.85;
+            margin: 0;
+            letter-spacing: -6px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            margin-top: 30px;
+            letter-spacing: 4px;
+        }
+
+        button {
+            margin-top: 50px;
+            padding: 15px 35px;
+            background: #111;
+            color: white;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background: #ff3b30;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>CLAUDIA_ARCHIVE</h1>
+    <main class="container">
 
-    <p>WELCOME TO MY BRAIN</p>
+        <div class="warning">
+            ⚠ ARCHIVE FOUND
+        </div>
 
-    <button>ENTER</button>
+        <h1>CLAUDIA_ARCHIVE</h1>
+
+        <div class="subtitle">
+            WELCOME TO MY BRAIN
+        </div>
+
+        <button>
+            ENTER
+        </button>
+
+    </main>
 
 </body>
+
 </html>
