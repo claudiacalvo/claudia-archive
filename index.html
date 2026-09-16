@@ -107,7 +107,66 @@
             border: 2px inset #aaa;
             font-size: 12px;
         }
+/* VENTANAS */
 
+.window {
+    display: none;
+
+    position: fixed;
+    top: 100px;
+    left: 180px;
+
+    width: 500px;
+    min-height: 300px;
+
+    background: #c0c0c0;
+
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-right: 3px solid #404040;
+    border-bottom: 3px solid #404040;
+
+    z-index: 10;
+}
+
+.window-title {
+    height: 28px;
+
+    background: #000080;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 3px 5px;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.close-button {
+    width: 22px;
+    height: 20px;
+
+    background: #c0c0c0;
+
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.window-content {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+}
     </style>
 </head>
 
@@ -117,7 +176,7 @@
 
         <!-- CARPETAS -->
 
-        <div class="icon">
+      <div class="icon" ondblclick="openWindow('sobreMi')">
             <div class="icon-image">📁</div>
             <div class="icon-name">SOBRE_MI</div>
         </div>
@@ -160,7 +219,43 @@
         </div>
 
     </main>
+    
+<!-- VENTANA SOBRE MI -->
 
+<div class="window" id="sobreMi">
+
+    <div class="window-title">
+
+        <span>📁 SOBRE_MI</span>
+
+        <button class="close-button" onclick="closeWindow('sobreMi')">
+            X
+        </button>
+
+    </div>
+
+    <div class="window-content">
+
+        <h2>HOLA 👋</h2>
+
+        <p>
+            Has encontrado el archivo SOBRE_MI.
+        </p>
+
+        <p>
+            Soy Claudia. Me gusta contar historias,
+            inventar ideas y convertir cosas bastante
+            normales en cosas bastante menos normales.
+        </p>
+
+        <p>
+            Este ordenador probablemente no debería
+            estar conectado a internet.
+        </p>
+
+    </div>
+
+</div>
     <!-- BARRA DE TAREAS -->
 
     <div class="taskbar">
@@ -174,6 +269,20 @@
         </div>
 
     </div>
+<script>
+
+function openWindow(windowId) {
+    document.getElementById(windowId).style.display = "block";
+}
+
+function closeWindow(windowId) {
+    document.getElementById(windowId).style.display = "none";
+}
+
+</script>
 
 </body>
 </html>
+
+
+
