@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ca">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,79 +7,173 @@
     <title>CLAUDIA_ARCHIVE</title>
 
     <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            background: #f4f0e8;
-            color: #111;
-            font-family: Arial, Helvetica, sans-serif;
             height: 100vh;
+            overflow: hidden;
+            font-family: "Courier New", monospace;
+            background: #008080;
+            color: black;
+        }
+
+        /* ESCRITORIO */
+
+        .desktop {
+            height: calc(100vh - 38px);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 25px;
+        }
+
+        /* ICONOS */
+
+        .icon {
+            width: 100px;
+            text-align: center;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .icon:hover {
+            background: rgba(0,0,0,0.15);
+        }
+
+        .icon-image {
+            font-size: 42px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .icon-name {
+            font-size: 13px;
+            line-height: 16px;
+            text-shadow: 1px 1px #000;
+        }
+
+        /* BARRA INFERIOR */
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 38px;
+            background: #c0c0c0;
+
+            border-top: 2px solid white;
+
             display: flex;
             align-items: center;
-            justify-content: center;
+            padding: 3px;
         }
 
-        .container {
-            text-align: center;
-            width: 90%;
-            max-width: 900px;
-        }
+        .start {
+            height: 30px;
+            padding: 0 12px;
 
-        .warning {
-            font-size: 12px;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-        }
+            background: #c0c0c0;
 
-        h1 {
-            font-size: clamp(50px, 12vw, 150px);
-            line-height: 0.85;
-            margin: 0;
-            letter-spacing: -6px;
-        }
+            border-top: 2px solid white;
+            border-left: 2px solid white;
+            border-right: 2px solid #404040;
+            border-bottom: 2px solid #404040;
 
-        .subtitle {
-            font-size: 20px;
-            margin-top: 30px;
-            letter-spacing: 4px;
-        }
-
-        button {
-            margin-top: 50px;
-            padding: 15px 35px;
-            background: #111;
-            color: white;
-            border: none;
-            font-size: 16px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
             cursor: pointer;
-            letter-spacing: 2px;
         }
 
-        button:hover {
-            background: #ff3b30;
+        .start:active {
+            border-top: 2px solid #404040;
+            border-left: 2px solid #404040;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
         }
+
+        .taskbar-info {
+            margin-left: auto;
+            padding: 5px 12px;
+            border: 2px inset #aaa;
+            font-size: 12px;
+        }
+
     </style>
 </head>
 
 <body>
 
-    <main class="container">
+    <main class="desktop">
 
-        <div class="warning">
-            ⚠ ARCHIVE FOUND
+        <!-- CARPETAS -->
+
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">SOBRE_MI</div>
         </div>
 
-        <h1>CLAUDIA_ARCHIVE</h1>
-
-        <div class="subtitle">
-            WELCOME TO MY BRAIN
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">EXPERIENCIA</div>
         </div>
 
-        <button>
-            ENTER
-        </button>
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">PROYECTOS</div>
+        </div>
+
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">IDEAS</div>
+        </div>
+
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">HISTORIAS</div>
+        </div>
+
+        <div class="icon">
+            <div class="icon-image">📁</div>
+            <div class="icon-name">CONTACTO</div>
+        </div>
+
+        <!-- ARCHIVOS -->
+
+        <div class="icon">
+            <div class="icon-image">📄</div>
+            <div class="icon-name">CV_CLAUDIA.pdf</div>
+        </div>
+
+        <div class="icon">
+            <div class="icon-image">🗑️</div>
+            <div class="icon-name">PAPELERA</div>
+        </div>
 
     </main>
 
-</body>
+    <!-- BARRA DE TAREAS -->
 
+    <div class="taskbar">
+
+        <button class="start">
+            🪟 INICIO
+        </button>
+
+        <div class="taskbar-info">
+            CLAUDIA_ARCHIVE.exe
+        </div>
+
+    </div>
+
+</body>
 </html>
