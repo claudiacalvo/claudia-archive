@@ -528,13 +528,41 @@
     </div>
 <script>
 
+let highestZ = 10;
+
 function openWindow(windowId) {
-    document.getElementById(windowId).style.display = "block";
+
+    const windowElement = document.getElementById(windowId);
+
+    windowElement.style.display = "block";
+
+    highestZ++;
+    windowElement.style.zIndex = highestZ;
+
+    const maxX = window.innerWidth - windowElement.offsetWidth - 20;
+    const maxY = window.innerHeight - windowElement.offsetHeight - 60;
+
+    const randomX = Math.max(20, Math.random() * maxX);
+    const randomY = Math.max(20, Math.random() * maxY);
+
+    windowElement.style.left = randomX + "px";
+    windowElement.style.top = randomY + "px";
 }
 
 function closeWindow(windowId) {
     document.getElementById(windowId).style.display = "none";
 }
+
+document.querySelectorAll(".window").forEach(function(windowElement) {
+
+    windowElement.addEventListener("mousedown", function() {
+
+        highestZ++;
+        windowElement.style.zIndex = highestZ;
+
+    });
+
+});
 
 </script>
 
