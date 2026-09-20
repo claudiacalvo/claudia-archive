@@ -553,12 +553,71 @@ function closeWindow(windowId) {
     document.getElementById(windowId).style.display = "none";
 }
 
+
+/* PONER LA VENTANA DELANTE */
+
 document.querySelectorAll(".window").forEach(function(windowElement) {
 
     windowElement.addEventListener("mousedown", function() {
 
         highestZ++;
         windowElement.style.zIndex = highestZ;
+
+    });
+
+});
+
+
+/* ARRASTRAR VENTANAS */
+
+document.querySelectorAll(".window-title").forEach(function(titleBar) {
+
+    let isDragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+    titleBar.addEventListener("mousedown", function(event) {
+
+        const windowElement = titleBar.parentElement;
+
+        isDragging = true;
+
+        offsetX = event.clientX - windowElement.offsetLeft;
+        offsetY = event.clientY - windowElement.offsetTop;
+
+        highestZ++;
+        windowElement.style.zIndex = highestZ;
+
+    });
+
+    document.addEventListener("mousemove", function(event) {
+
+        if (!isDragging) return;
+
+        const windowElement = titleBar.parentElement;
+
+        let newX = event.clientX - offsetX;
+        let newY = event.clientY - offsetY;
+
+        newX = Math.max(0, newX);
+        newY = Math.max(0, newY);
+
+        const maxX = window.innerWidth - windowElement.offsetWidth;
+
+        newX = Math.min(newX, maxX);
+
+        const maxY = window.innerHeight - 45 - windowElement.offsetHeight;
+
+        newY = Math.min(newY, maxY);
+
+        windowElement.style.left = newX + "px";
+        windowElement.style.top = newY + "px";
+
+    });
+
+    document.addEventListener("mouseup", function() {
+
+        isDragging = false;
 
     });
 
