@@ -118,7 +118,58 @@
             border-right: 2px solid white;
             border-bottom: 2px solid white;
         }
+.taskbar-windows {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-left: 6px;
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+}
 
+.taskbar-window {
+    height: 30px;
+    min-width: 130px;
+    max-width: 180px;
+
+    padding: 0 10px;
+
+    background: linear-gradient(
+        to bottom,
+        #5b9bea,
+        #2b6fc4
+    );
+
+    border: 1px solid #174f9c;
+    border-radius: 3px;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.taskbar-window:hover {
+    background: linear-gradient(
+        to bottom,
+        #74adf5,
+        #397fd2
+    );
+}
+
+.taskbar-window.active {
+    background: #174f9c;
+}
         .taskbar-info {
             margin-left: auto;
             padding: 5px 12px;
@@ -514,21 +565,26 @@
 
 </div>
     <!-- BARRA DE TAREAS -->
+    
+<div class="taskbar">
 
-    <div class="taskbar">
+    <button class="start">
+        🪟 Inicio
+    </button>
 
-        <button class="start">
-            🪟 Inicio
-        </button>
+    <div class="taskbar-windows" id="taskbarWindows"></div>
 
-        <div class="taskbar-info">
-            CLAUDIA_ARCHIVE.exe
-        </div>
-
+    <div class="taskbar-info">
+        CLAUDIA_ARCHIVE.exe
     </div>
+
+</div>
 <script>
 
 let highestZ = 10;
+
+
+/* ABRIR VENTANA */
 
 function openWindow(windowId) {
 
@@ -547,14 +603,60 @@ function openWindow(windowId) {
 
     windowElement.style.left = randomX + "px";
     windowElement.style.top = randomY + "px";
+
+
+    /* CREAR BOTÓN EN LA BARRA */
+
+    const taskbar = document.getElementById("taskbarWindows");
+
+    if (!document.getElementById("task-" + windowId)) {
+
+        const button = document.createElement("button");
+
+        button.id = "task-" + windowId;
+        button.className = "taskbar-window";
+        button.textContent = "📁 " + windowId.toUpperCase();
+
+        button.onclick = function() {
+
+            if (windowElement.style.display === "none") {
+
+                windowElement.style.display = "block";
+
+                highestZ++;
+                windowElement.style.zIndex = highestZ;
+
+            } else {
+
+                windowElement.style.display = "none";
+
+            }
+
+        };
+
+        taskbar.appendChild(button);
+
+    }
+
 }
+
+
+/* CERRAR VENTANA */
 
 function closeWindow(windowId) {
+
     document.getElementById(windowId).style.display = "none";
+
+    const taskbarButton = document.getElementById("task-" + windowId);
+
+    if (taskbarButton) {
+        taskbarButton.remove();
+    }
+
 }
 
 
-/* PONER LA VENTANA DELANTE */
+/* PONER VENTANA DELANTE */
 
 document.querySelectorAll(".window").forEach(function(windowElement) {
 
@@ -576,6 +678,7 @@ document.querySelectorAll(".window-title").forEach(function(titleBar) {
     let offsetX = 0;
     let offsetY = 0;
 
+
     titleBar.addEventListener("mousedown", function(event) {
 
         const windowElement = titleBar.parentElement;
@@ -589,6 +692,7 @@ document.querySelectorAll(".window-title").forEach(function(titleBar) {
         windowElement.style.zIndex = highestZ;
 
     });
+
 
     document.addEventListener("mousemove", function(event) {
 
@@ -615,6 +719,7 @@ document.querySelectorAll(".window-title").forEach(function(titleBar) {
 
     });
 
+
     document.addEventListener("mouseup", function() {
 
         isDragging = false;
@@ -624,8 +729,6 @@ document.querySelectorAll(".window-title").forEach(function(titleBar) {
 });
 
 </script>
-
-</body>
 </html>
 
 
