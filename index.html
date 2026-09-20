@@ -221,7 +221,34 @@
 
     cursor: default;
 }
+.window-buttons {
+    display: flex;
+    gap: 3px;
+}
 
+.minimize-button {
+    width: 24px;
+    height: 22px;
+
+    background: linear-gradient(
+        to bottom,
+        #6ba8ed,
+        #2b6fc4
+    );
+
+    color: white;
+
+    border: 1px solid #174f9c;
+    border-radius: 2px;
+
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    line-height: 16px;
+}
 .close-button {
     width: 24px;
     height: 22px;
@@ -312,9 +339,17 @@
 
         <span>📁 SOBRE_MI</span>
 
-        <button class="close-button" onclick="closeWindow('sobreMi')">
-            X
-        </button>
+        <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('sobreMi')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('sobreMi')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -348,9 +383,17 @@
 
         <span>📁 EXPERIENCIA</span>
 
-        <button class="close-button" onclick="closeWindow('experiencia')">
-            X
-        </button>
+        <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('experiencia')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('experiencia')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -384,9 +427,17 @@
 
         <span>📁 PROYECTOS</span>
 
-        <button class="close-button" onclick="closeWindow('proyectos')">
-            X
-        </button>
+        <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('proyectos')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('proyectos')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -428,9 +479,17 @@
 
         <span>📁 IDEAS</span>
 
-        <button class="close-button" onclick="closeWindow('ideas')">
-            X
-        </button>
+       <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('ideas')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('ideas')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -477,9 +536,17 @@
 
         <span>📁 HISTORIAS</span>
 
-        <button class="close-button" onclick="closeWindow('historias')">
-            X
-        </button>
+        <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('historias')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('historias')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -528,9 +595,17 @@
 
         <span>📁 CONTACTO</span>
 
-        <button class="close-button" onclick="closeWindow('contacto')">
-            X
-        </button>
+       <div class="window-buttons">
+
+    <button class="minimize-button" onclick="minimizeWindow('contacto')">
+        −
+    </button>
+
+    <button class="close-button" onclick="closeWindow('contacto')">
+        X
+    </button>
+
+</div>
 
     </div>
 
@@ -655,6 +730,12 @@ function closeWindow(windowId) {
 
 }
 
+function closeWindow(windowId) {
+    function minimizeWindow(windowId) {
+
+    document.getElementById(windowId).style.display = "none";
+
+}
 
 /* PONER VENTANA DELANTE */
 
